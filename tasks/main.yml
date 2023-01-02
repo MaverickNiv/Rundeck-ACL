@@ -1,18 +1,3 @@
 ---
-- name: Create or update a rundeck ACL policy in project Ansible
-  community.general.rundeck_acl_policy:
-    name: "Project_01"
-    api_version: {{ rundeck_api_version }}
-    url: "{{ rundeck_url }}"
-    token: "{{ rundeck_token }}"
-    state: {{ rundeck_state }}
-    project: "{{ project_name }}"
-    policy:
-      description: "{{ policy_desc }}"
-      context:
-        application: rundeck
-      for:
-        project:
-          - allow: read
-      by:
-        group: "build"
+- include_tasks: application_access.yml
+- include_tasks: project_access.yml
