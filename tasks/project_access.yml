@@ -5,7 +5,7 @@
     api_version: {{ rundeck_api_version }}
     url: "{{ rundeck_url }}"
     token: "{{ rundeck_token }}"
-    state: {{ rundeck_state }}
+    state: present
     project: "{{ project_name }}"
     policy:
       description: Admin project level access control. Applies to resources within a specific project.
