@@ -1,1 +1,9 @@
 ---
+rundeck_api_version: 18
+rundeck_url: https://rundeck.epmtest.cyberarkcloud.com/
+rundeck_token:
+rundeck_state: present
+
+## to be acquired by user_input
+project_name: comms
+policy_desc: ensuring notification through internal SRE team
