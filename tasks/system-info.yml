@@ -1,0 +1,28 @@
+- name: Create or update a rundeck ACL Application Policy for reading system info
+  community.general.rundeck_acl_policy:
+    name: "Application_Policy"
+    api_version: {{ rundeck_api_version }}
+    url: "{{ rundeck_url }}"
+    token: "{{ rundeck_token }}"
+    state:  present
+    project: "{{ project_name }}"
+    policy:
+      description: Admin Application level access control, applies to reading system information.
+      context:
+        application: 'rundeck'
+      for:
+        resource:
+            system:
+            - allow: [read,enable_executions,disable_executions,admin] # allow read of system info, enable/disable all executions
+      project:
+          - match:
+              name: "{{ project_name }}"
+            allow: [read,import,export,configure,delete,promote,admin] # allow full access of all projects or use 'admin'
+        project_acl:
+          - match:
+              name: "{{ project_name }}"
+            allow: [read,create,update,delete,admin] # allow modifying project-specific ACL files
+        storage:
+          - allow: [read,create,update,delete] # allow access for /ssh-key/* storage content
+    by:
+        group: {{ admin_group }}
