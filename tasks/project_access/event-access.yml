@@ -1,0 +1,18 @@
+ - name: Create or update a rundeck ACL policy for rundeck project events
+  community.general.rundeck_acl_policy:
+    name: "Project_01"
+    api_version: {{ rundeck_api_version }}
+    url: "{{ rundeck_url }}"
+    token: "{{ rundeck_token }}"
+    state: present
+    project: "{{ project_name }}"
+    policy:
+      description: Admin project level access control. Applies to resources within a specific project.
+      context:
+        project: "{{ project_name }}"
+      for:
+        resource:
+            event:
+            - allow: [read,create] # allow read/create events
+      by:
+        group: {{ admin_group }}
