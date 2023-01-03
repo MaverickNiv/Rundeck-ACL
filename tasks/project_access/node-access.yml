@@ -1,0 +1,27 @@
+ - name: Create or update a rundeck ACL policy for rundeck project node
+  community.general.rundeck_acl_policy:
+    name: "Project_01"
+    api_version: {{ rundeck_api_version }}
+    url: "{{ rundeck_url }}"
+    token: "{{ rundeck_token }}"
+    state: present
+    project: "{{ project_name }}"
+    policy:
+      description: Admin project level access control. Applies to resources within a specific project.
+      context:
+        project: "{{ project_name }}"
+      for:
+        resource:
+            node:
+            - allow: [read,create,update,refresh] # allow refresh node sources
+          - equals:
+              kind: event
+            allow: [read,create] # allow read/create events
+        adhoc:
+          - allow: [read,run,runAs,kill,killAs] # allow running/killing adhoc jobs
+        job:
+          - allow: [create,read,update,delete,run,runAs,kill,killAs] # allow create/read/write/delete/run/kill of all jobs
+        node:
+          - allow: [read,run] # allow read/run for nodes
+      by:
+        group: {{ admin_group }}
