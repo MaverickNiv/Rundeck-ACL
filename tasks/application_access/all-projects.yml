@@ -10,19 +10,9 @@
       description: Admin Application level access control, applies to ACL files.
       context:
         application: 'rundeck'
-      for:
-        resource:
-            system_acl:
-            - allow: [read,create,update,delete,admin] # allow modifying system ACL files
         project:
           - match:
               name: "{{ project_name }}"
             allow: [read,import,export,configure,delete,promote,admin] # allow full access of all projects or use 'admin'
-        project_acl:
-          - match:
-              name: "{{ project_name }}"
-            allow: [read,create,update,delete,admin] # allow modifying project-specific ACL files
-        storage:
-          - allow: [read,create,update,delete] # allow access for /ssh-key/* storage content
       by:
         group: {{ admin_group }}
