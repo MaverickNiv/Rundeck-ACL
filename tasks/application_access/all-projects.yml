@@ -10,8 +10,9 @@
       description: Admin Application level access control, applies to ACL files.
       context:
         application: 'rundeck'
-        project:
-          - match:
+        for:
+          project:
+          - equals:
               name: "{{ project_name }}"
             allow: [read,import,export,configure,delete,promote,admin] # allow full access of all projects or use 'admin'
       by:
