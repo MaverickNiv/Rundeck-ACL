@@ -10,8 +10,8 @@
       description: Admin Application level access control, applies to reading system information.
       context:
         application: 'rundeck'
-      project:
+      for:
         storage:
-          - allow: [read,create,update,delete] # allow access for /ssh-key/* storage content
+        - allow: [read,create,update,delete] # allow access for /ssh-key/* storage content
     by:
         group: {{ admin_group }}
