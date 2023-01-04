@@ -12,8 +12,7 @@
       context:
         project: "{{ project_name }}"
       for:
-        resource:
-            job:
-            - allow: [create] # allow create jobs
+        job:
+        - allow: [create,read,update,delete,run,runAs,kill,killAs] # allow create/read/write/delete/run/kill of all jobs
       by:
         group: {{ admin_group }}
