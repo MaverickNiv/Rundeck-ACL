@@ -7,7 +7,7 @@
     state:  present
     project: "{{ project_name }}"
     policy:
-      description: Admin Application level access control, applies to ACL files.
+      description: Admin Application level access control, applies to project access
       context:
         application: 'rundeck'
         for:
