@@ -1,0 +1,21 @@
+
+---
+- name: Create or update a rundeck ACL Application Policy for Creating Projects
+  community.general.rundeck_acl_policy:
+    name: "Application_Policy"
+    api_version: {{ rundeck_api_version }}
+    url: "{{ rundeck_url }}"
+    token: "{{ rundeck_token }}"
+    state:  present
+    project: "{{ project_name }}"
+    policy:
+      description: Allows admin level access to project "X" 
+      context:
+        application: 'rundeck'
+      for:
+        project:
+        - equals: 
+            name: "{{ project_name }}"
+          allow:  [admin]
+      by:
+        group: admin
