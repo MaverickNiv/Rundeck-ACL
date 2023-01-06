@@ -1,6 +1,6 @@
 ---
 rundeck_api_version: 18
-rundeck_url: https://rundeck.epmtest.cyberarkcloud.com/
+rundeck_url: 
 rundeck_token:
 rundeck_state: present
 
