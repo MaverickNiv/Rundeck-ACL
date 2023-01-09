@@ -19,3 +19,4 @@
           allow:  [admin]
       by:
         group: admin
+  tags: admin
