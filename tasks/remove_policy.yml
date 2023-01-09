@@ -1,8 +1,10 @@
 ---
 - name: Remove a rundeck system policy
-community.general.rundeck_acl_policy:
+  community.general.rundeck_acl_policy:
     name: "Project_01"
     api_version: {{ rundeck_api_version }}
     url: "{{ rundeck_url }}"
     token: "{{ rundeck_token }}"
     state: absent
+  tags: remove
+
