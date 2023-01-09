@@ -1,16 +1,20 @@
 ---
 - name: Include tasks from runner.yml
      include_tasks: runner.yml
-     tags: runner
+     when: "{{ policy_role }}" == "Runner"
      
 - name: Include tasks from author.yml
      include_tasks: author.yml
-     tags: author
+     when: "{{ policy_role }}" == "Author"
      
 - name: Include tasks from admin.yml
      include_tasks: admin.yml
-     tags: admin
+     when: "{{ policy_role }}" == "Admin"
      
 - name: Include tasks from remove_policy.yml
      include_tasks: remove_policy.yml
-     tags: remove
+     when: "{{ policy_role }}" == "Remove"
+
+
+     
+
