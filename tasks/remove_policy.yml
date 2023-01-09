@@ -6,5 +6,4 @@
     url: "{{ rundeck_url }}"
     token: "{{ rundeck_token }}"
     state: absent
-  tags: remove
 
