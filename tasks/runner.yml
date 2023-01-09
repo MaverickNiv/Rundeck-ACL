@@ -18,3 +18,5 @@
           allow: [configure]
       by:
         group: admin
+   tags: runner
+
