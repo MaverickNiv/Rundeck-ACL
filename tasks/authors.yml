@@ -18,4 +18,3 @@
           allow:  [read,import,export,configure,delete]
       by:
         group: admin
-  tags: author
